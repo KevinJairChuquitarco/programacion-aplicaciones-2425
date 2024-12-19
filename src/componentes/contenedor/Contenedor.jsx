@@ -1,18 +1,11 @@
 import { NativeBaseProvider, View } from "native-base";
-import { StyleSheet } from "react-native";
+import { EstilosContenedor } from "./contenedor.styles";
 
 export const Contenedor = ( { children } ) => {
     return <NativeBaseProvider>
-        <View style={ estilos.container }>
+        <View style={ EstilosContenedor.container }>
             { children }
         </View>
     </NativeBaseProvider>;
 }
 
-const estilos = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-  }
-});

@@ -1,5 +1,5 @@
 import { Text, Heading, Button } from "native-base";
-import { Contenedor } from "../../componentes/contenedor/Contenedor";
+import { Contenedor } from "../../componentes/contenedor/contenedor.jsx";
 export const Home = ({ navigation }) => {
   return <Contenedor>
     <Heading>

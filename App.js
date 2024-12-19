@@ -1,8 +1,8 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Home } from "./src/pantallas/home/Home.jsx";
-import { CalculadoraIMC } from "./src/pantallas/calculadoraIMC/CalculadoraIMC.jsx";
-import { ConsumoAPI } from "./src/pantallas/consumoAPI/ConsumoAPI.jsx";
+import { Home } from "./src/pantallas/home/home.jsx";
+import { CalculadoraIMC } from "./src/pantallas/calculadoraIMC/calculadoraIMC.jsx";
+import { ConsumoAPI } from "./src/pantallas/consumoAPI/consumoAPI.jsx";
 
 const Stack = createNativeStackNavigator();
 
