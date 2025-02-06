@@ -62,7 +62,7 @@ export const Home = ({ navigation }) => {
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae ducimus aut sunt excepturi quibusdam corporis laborum non ea temporibus soluta, praesentium fugit, a iusto eligendi illo nulla cum et autem!
     </Text>
     <Button mr={12} ml={12} onPress={() => {
-      navigation.navigate("CalculadoraIMC");
+      navigation.navigate("SQLiteScreen");
     }}>
       Ir a Crud
     </Button>
