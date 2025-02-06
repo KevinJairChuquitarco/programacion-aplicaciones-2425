@@ -1,11 +1,11 @@
-import { NativeBaseProvider, View } from "native-base";
+import { NativeBaseProvider, ScrollView } from "native-base";
 import { EstilosContenedor } from "./contenedor.styles";
 
 export const Contenedor = ( { children } ) => {
     return <NativeBaseProvider>
-        <View style={ EstilosContenedor.container }>
+        <ScrollView style={ EstilosContenedor.container }>
             { children }
-        </View>
+        </ScrollView >
     </NativeBaseProvider>;
 }
 
