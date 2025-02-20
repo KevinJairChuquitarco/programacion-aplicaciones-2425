@@ -4,11 +4,14 @@ import { Home } from "./src/pantallas/home/home.jsx";
 import { CalculadoraIMC } from "./src/pantallas/calculadoraIMC/calculadoraIMC.jsx";
 import { ConsumoAPI } from "./src/pantallas/consumoAPI/consumoAPI.jsx";
 import { SQLiteScreen } from "./src/pantallas/sqlite/sqlite.jsx";
+import { SQLiteProvider } from "expo-sqlite";
+import { migrarBaseDatos } from "./src/servicios/database.jsx";
 
 const Stack = createNativeStackNavigator();
 
 export default function App(){
-  return <NavigationContainer>
+  return <SQLiteProvider databaseName="db.db" onInit={migrarBaseDatos}>
+    <NavigationContainer>
     <Stack.Navigator>
       <Stack.Screen options={{title:"Inicio"}} name="Home" component={ Home }/>
       <Stack.Screen options={{title:"Calculadora IMC"}} name="CalculadoraIMC" component={ CalculadoraIMC }/>
@@ -16,5 +19,6 @@ export default function App(){
       <Stack.Screen options={{title:"Gestión de Tareas"}} name="SQLiteScreen" component={ SQLiteScreen }/> 
     </Stack.Navigator>
   </NavigationContainer>
+  </SQLiteProvider>
 }
 
