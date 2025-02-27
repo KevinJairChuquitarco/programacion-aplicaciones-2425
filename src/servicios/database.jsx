@@ -34,5 +34,5 @@ export const marcarItemCompletado = async ( db, id) => {
 }
 
 export const eliminarItem = async (db, id) => {
-    await db.runAsync('DETETE FROM items WHERE id = ?;', id);
+    await db.runAsync('DELETE FROM items WHERE id = ?;', id);
 }

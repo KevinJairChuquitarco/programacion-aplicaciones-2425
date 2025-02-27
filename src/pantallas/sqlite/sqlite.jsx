@@ -10,7 +10,7 @@ import { useSQLiteContext } from "expo-sqlite";
 
 export const SQLiteScreen = () => {
     const db = useSQLiteContext();
-    const [text, setTexto] = useState('');
+    const [texto, setTexto] = useState('');
     const [itemsPorHacer, setItemsPorHacer] = useState([]);
     const [itemsCompletados, setItemsCompletados] = useState([]);
 
@@ -32,17 +32,44 @@ export const SQLiteScreen = () => {
             <View style={styles.contenedor}>
                 <Text style={styles.titulo}>Ejemplo SQLite</Text>
                 <View style={styles.fila}>
-                    <TextInput style={styles.entrada}> </TextInput>
+                    <TextInput 
+                        onChangeText={(text)=>setTexto(text)}
+                        onSubmitEditing={ async () => {
+                                await agregarItem(db, texto);
+                                recargarItems();
+                                setTexto('');
+                            } 
+                        }
+                        placeholder="Ingresa la tarea"
+                        value={texto}
+                        style={styles.entrada}
+                    /> 
                 </View>
                 <ScrollView style={styles.areaLista}>
                     <View style={styles.contenedorDireccion}>
                         <Text style={styles.tituloSeccion}>Por Hacer</Text>
-                        {/* <Item></Item> */}
+                        { itemsPorHacer.map((item)=> (
+                            <Item
+                            key={item.id}
+                            item={item}
+                            onPressItem={ async (id) => {
+                                await marcarItemCompletado(db, id);
+                                recargarItems();
+                            }}/>
+                        ))}
                     </View>
 
                     <View style={styles.contenedorDireccion}>
                         <Text style={styles.tituloSeccion}>Tareas Hechas</Text>
-                        {/* <Item></Item> */}
+                        { itemsCompletados.map( (item)=>(
+                            <Item
+                                key={item.id}
+                                item={item}
+                                onPressItem={ async (id) => {
+                                    await eliminarItem(db,id);
+                                    recargarItems();
+                            }}/>
+                        ) ) }
                     </View>
                 </ScrollView>
             </View>
